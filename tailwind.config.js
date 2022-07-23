@@ -22,6 +22,7 @@ module.exports = {
           warning: "#FBBD23",
 
           error: "#F87272",
+          button_base: "rgba(221, 158, 16, 0.1);"
         },
       },
     ],
