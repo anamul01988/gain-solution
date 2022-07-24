@@ -44,7 +44,7 @@ function TableBody({ product }) {
   }, []);
   return (
     <tr>
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td class="text-sm text-gray-900 font-light  md:px-3  py-4 whitespace-nowrap">
         <div class=" flex align-items-center justify-center ">
           <img
             class="w-[90px] h-[100px] object-center"
@@ -61,10 +61,10 @@ function TableBody({ product }) {
           </div>
         </div>
       </td>
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td class="text-sm text-gray-900 font-light  md:px-3  py-4 whitespace-nowrap">
         {ram}/{storage}
       </td>
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td class="text-sm text-gray-900 font-light  md:px-3  py-4 whitespace-nowrap">
         <button
           class={` font-bold button_base px-5 py-1 ${
             bestValue && " text-[#DD9E10]  bg-[#ffedd5] "
@@ -75,7 +75,7 @@ function TableBody({ product }) {
           {bestValue || bestCamera || bestPerform}
         </button>
       </td>
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td class="text-sm text-gray-900 font-light md:px-3  py-4 whitespace-nowrap">
         TK {phone_price}
       </td>
     </tr>

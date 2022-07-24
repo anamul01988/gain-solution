@@ -40,7 +40,7 @@ function Table() {
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden">
               <div class="px-4 md:px-10 py-4 md:py-7">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center md:justify-between lg:justify-between justify-around">
                   <p
                     tabindex="0"
                     class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white"
@@ -73,25 +73,25 @@ function Table() {
                   <tr>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-600 px-6 py-4"
+                      class="text-sm font-medium text-gray-600 lg:px-6 md:px-3 px-1 py-4"
                     >
                       Modal
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-600 px-6 py-4"
+                      class="text-sm font-medium text-gray-600  md:px-3 px-1 py-4"
                     >
                       Ram/Rom
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-600 px-6 py-4"
+                      class="text-sm font-medium text-gray-600  md:px-3 px-1 py-4"
                     >
                       Tag
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-600 px-6 py-4"
+                      class="text-sm font-medium text-gray-600  md:px-3 px-1 py-4"
                     >
                       Price
                     </th>
