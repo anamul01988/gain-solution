@@ -3,6 +3,7 @@ import clsx from "clsx";
 import TableBody from "./TableBody";
 import useLazyLoad from "./useLazyLoad";
 import { LoadingTable } from "./LoadingTable";
+import Loading from "./Loading";
 
 function Table() {
     const [product, setProduct] = useState([]);
@@ -42,30 +43,47 @@ function Table() {
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden">
+              
+
+            <div class="px-4 md:px-10 py-4 md:py-7">
+                <div class="flex items-center justify-between">
+                    <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">All Products</p>
+                    <div class=" flex items-center text-sm font-medium leading-none text-gray-600 border-solid border-2 border-indigo-600 dark:text-gray-200   bg-transparent dark:bg-gray-800     dark:hover:bg-gray-700  cursor-pointer rounded">
+                        
+                        <select aria-label="select" class="py-3 px-4  focus:text-indigo-600 focus:outline-none bg-transparent">
+                            <option class="text-sm  text-indigo-800">All Products</option>
+                            <option class="text-sm text-indigo-800">Best Value</option>
+                            <option class="text-sm text-indigo-800">Best Perfomence</option>
+                            <option class="text-sm text-indigo-800">Best Camera</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
               <table class="min-w-full text-center">
+                
                 <thead>
                   <tr>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4"
+                      class="text-sm font-medium text-gray-600 px-6 py-4"
                     >
                       Modal
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4"
+                      class="text-sm font-medium text-gray-600 px-6 py-4"
                     >
                       Ram/Rom
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4"
+                      class="text-sm font-medium text-gray-600 px-6 py-4"
                     >
                       Tag
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4"
+                      class="text-sm font-medium text-gray-600 px-6 py-4"
                     >
                       Price
                     </th>
@@ -81,7 +99,7 @@ function Table() {
               </table>
               <div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
               {/* <LoadingTable product={product}/> */}
-            <h2>Loading Posts...</h2>
+             <Loading></Loading>
         </div>
             </div>
           </div>

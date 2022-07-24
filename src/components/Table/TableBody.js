@@ -31,7 +31,7 @@ function TableBody({product}) {
             <img class="w-[90px] h-[100px] object-center" src={phone_images[0]} alt="img" />
             {/* <h3>img</h3> */}
             <div class="px-6 py-4 items-center">
-                <div class="font-regular text-sm mb-2 w-20 h-4 " >{phone_details.model}</div>
+                <div class="font-bold text-gray-900 text-sm mb-2 w-20 h-4 " >{phone_details.model}</div>
               
                 <div class="font-regular text-sm mb-2 w-20 h-4  ">{brand}</div>
             </div>
