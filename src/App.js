@@ -8,10 +8,6 @@ function App() {
     <div className=' '>
       <Header/>
       <Table/>
-      {/* <button class="btn btn-secondary text-sm">Button</button>
-      <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1> */}
     </div>
   );
 }
