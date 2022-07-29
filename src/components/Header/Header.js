@@ -1,7 +1,8 @@
 import React from "react";
 import { ImCancelCircle } from "react-icons/im";
 import { MdOutlinePublishedWithChanges } from "react-icons/md";
-const Header = () => {
+const Header = ({searchData, setSearchData}) => {
+  // console.log(searchData);
   return (
     <div class="bg-[#0095A0] lg:px-[120px] md:px-[60px] sm:px-[20px] px-[10px]">
       <div class="navbar  ">
@@ -17,6 +18,7 @@ const Header = () => {
                 name="search "
                 class="h-[33px]  placeholder-white md:h-10 w-44 md:w-96 -mt-[2px] md:mt-[0px] pr-8 rounded-sm  px-4  text-[#fff]  bg-transparent border-solid outline-2 flex justify-center items-center md:text-sm text-[14px]"
                 placeholder="Search by Title or Brand..."
+                onChange={(e) => setSearchData(e.target.value)}
               />
               <button
                 class="absolute h-8 w-8 cursor-pointer flex justify-center items-center right-[0px] md:right-[2px] md:top-[4px] top-[1px] text-md"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function TableBody({ product }) {
-  console.log(product);
+  // console.log(product);
   const [bestValue, setBestValue] = useState("");
   const [bestCamera, setBestCamera] = useState("");
   const [bestPerform, setBestPerform] = useState("");
@@ -15,9 +15,9 @@ function TableBody({ product }) {
     speciality,
   } = product;
   let value = brand;
-  console.log(value);
+  // console.log(value);
   useEffect(() => {
-    console.log(brand);
+    // console.log(brand);
     if (
       parseInt(phone_price) <= 20000 &&
       parseInt(ram) >= 4 &&
