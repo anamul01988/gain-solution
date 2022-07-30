@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-function TableBody({ product }) {
+function TableBodyPractice({ product , badges, setBadges }) {
   // console.log(product);
-  const [bestValue, setBestValue] = useState("");
-  const [bestCamera, setBestCamera] = useState("");
-  const [bestPerform, setBestPerform] = useState("");
+//   const [bestValue, setBestValue] = useState("");
+//   const [bestCamera, setBestCamera] = useState("");
+//   const [bestPerform, setBestPerform] = useState("");
+
   const {
     phone_images,
     brand,
@@ -14,23 +15,26 @@ function TableBody({ product }) {
     phone_price,
     speciality,
   } = product;
-  // let value = brand;
-  // console.log(value);
+ 
   useEffect(() => {
     // console.log(brand);
     if (
-      parseInt(phone_price) <= 20000 &&
-      parseInt(ram) >= 4 &&
-      parseInt(storage) >= 64 &&
+    //   parseInt(phone_price) <= 20000 &&
+    //   parseInt(ram) >= 4 &&
+    //   parseInt(storage) >= 64 &&
+      phone_price <= 20000 &&
+      ram >= 4 &&
+      storage >= 64 &&
       brand === "Xiaomi"
     ) {
-      setBestValue("Best Value");
+      //   setBestValue("Best Value");
+      setBadges("Best Value");
     } else if (
       parseInt(phone_details.selfieCamera.split(",")[0].split(" ")[0]) >= 13 &&
       storage >= 64 &&
       phone_details.external.includes("microSD")
     ) {
-      setBestCamera("Best Camera");
+      setBadges("Best Camera");
     } else if (
       parseInt(phone_price) > 20000 &&
       parseInt(ram) > 4 &&
@@ -39,9 +43,12 @@ function TableBody({ product }) {
       phone_details.displayType.includes("AMOLED") &&
       speciality.map((x) => x.includes("1080p"))
     ) {
-      setBestPerform("Best Perfomance");
+      setBadges("Best Perfomance");
     }
-  }, []);
+    else{
+        setBadges("No Badges")
+    }
+  }, [phone_images, brand,phone_details,ram,storage, phone_price, speciality ]);
   return (
     <tr>
       <td class="text-sm text-gray-900 font-light  md:px-3  py-4 whitespace-nowrap">
@@ -67,12 +74,14 @@ function TableBody({ product }) {
       <td class="text-sm text-gray-900 font-light  md:px-3  py-4 whitespace-nowrap">
         <button
           class={` font-bold button_base px-5 py-1 ${
-            bestValue && " text-[#DD9E10]  bg-[#ffedd5] "
-          } || ${bestCamera && " text-[#874C72]  bg-[#F1EBF1] "} || ${
-            bestPerform && " text-[#11A0DB]  bg-[#E5F4FB]"
+            badges === "Best Value" && " text-[#DD9E10]  bg-[#ffedd5] "
+          } || ${
+            badges === "Best Camera" && " text-[#874C72]  bg-[#F1EBF1] "
+          } || ${
+            badges === "Best Perfomance" && " text-[#11A0DB]  bg-[#E5F4FB]"
           }   `}
         >
-          {bestValue || bestCamera || bestPerform}
+          {badges}
         </button>
       </td>
       <td class="text-sm text-gray-900 font-light md:px-3  py-4 whitespace-nowrap">
@@ -82,4 +91,4 @@ function TableBody({ product }) {
   );
 }
 
-export default TableBody;
+export default TableBodyPractice;
