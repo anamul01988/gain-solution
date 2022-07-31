@@ -1,21 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import TableBody from "./TableBody";
 import useLazyLoad from "./useLazyLoad";
 import Loading from "./Loading";
-import { ImCancelCircle } from "react-icons/im";
-import { MdOutlinePublishedWithChanges } from "react-icons/md";
-import Header from "../Header/Header";
-import TableBodyPractice from "./TableBodyPractice";
+import TableBody from "./TableBody";
 function Table({searchData, setSearchData}) {
   const [product, setProduct] = useState([]);
-
-  const [data2, setData2] = useState([]);
-  const [badges, setBadges] = useState("");
-
   const [value, setValue] = useState("");
-
-
   useEffect(() => {
     fetch("./data.1658407534.json")
       .then((res) => res.json())
@@ -28,15 +18,15 @@ function Table({searchData, setSearchData}) {
   const NUM_PER_PAGE = 20;
   const TOTAL_PAGES = 3;
 
-  const mainData = product.filter((item)=> value ==  'best-value' ?  parseInt(item?.phone_price) <= 20000 &&
+  const mainData = product.filter((item)=> value ===  'Best Value' ?  parseInt(item?.phone_price) <= 20000 &&
   parseInt(item?.ram) >= 4 &&
   parseInt(item?.storage) >= 64 &&
-  item?.brand === "Xiaomi" : value == 'performance' ? parseInt(item?.phone_price) > 20000 &&
+  item?.brand === "Xiaomi" : value === 'Best Performance' ? parseInt(item?.phone_price) > 20000 &&
   parseInt(item?.ram) > 4 &&
   parseInt(item.storage) >= 128 &&
   item?.phone_details.chipset.includes("Snapdragon") &&
   item?.phone_details.displayType.includes("AMOLED") &&
-  item?.speciality.map((x) => x.includes("1080p")) : value === 'camera' ?     parseInt(item?.phone_details.selfieCamera.split(",")[0].split(" ")[0]) >= 13 &&
+  item?.speciality.map((x) => x.includes("1080p")) : value === 'Best Camera' ?     parseInt(item?.phone_details.selfieCamera.split(",")[0].split(" ")[0]) >= 13 &&
   parseInt(item?.storage) >= 64 &&
   item?.phone_details.external.includes("microSD") : item);
 
@@ -82,13 +72,13 @@ function Table({searchData, setSearchData}) {
                         <option class="text-sm  text-indigo-800" value=''>
                           All Products
                         </option>
-                        <option class="text-sm text-indigo-800" value='best-value'>
+                        <option class="text-sm text-indigo-800" value='Best Value'>
                           Best Value
                         </option>
-                        <option class="text-sm text-indigo-800" value='performance'>
+                        <option class="text-sm text-indigo-800" value='Best Performance'>
                           Best Perfomence
                         </option>
-                        <option class="text-sm text-indigo-800" value='camera'>
+                        <option class="text-sm text-indigo-800" value='Best Camera'>
                           Best Camera
                         </option>
                       </select>
@@ -135,7 +125,7 @@ function Table({searchData, setSearchData}) {
                       .includes(searchData.toString().toLowerCase()) 
                   )
                     .map((product) => {
-                      return <TableBodyPractice key={product._id} product={product}  badges={badges} setBadges={setBadges} value={value}/>;
+                      return <TableBody key={product._id} product={product}   value={value}/>;
                     })
                     }
                   </tbody>
