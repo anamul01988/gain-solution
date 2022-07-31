@@ -13,7 +13,7 @@ function Table({searchData, setSearchData}) {
   const [data2, setData2] = useState([]);
   const [badges, setBadges] = useState("");
 
-
+  const [value, setValue] = useState("");
 
 
   useEffect(() => {
@@ -28,11 +28,23 @@ function Table({searchData, setSearchData}) {
   const NUM_PER_PAGE = 20;
   const TOTAL_PAGES = 3;
 
+  const mainData = product.filter((item)=> value ==  'best-value' ?  parseInt(item?.phone_price) <= 20000 &&
+  parseInt(item?.ram) >= 4 &&
+  parseInt(item?.storage) >= 64 &&
+  item?.brand === "Xiaomi" : value == 'performance' ? parseInt(item?.phone_price) > 20000 &&
+  parseInt(item?.ram) > 4 &&
+  parseInt(item.storage) >= 128 &&
+  item?.phone_details.chipset.includes("Snapdragon") &&
+  item?.phone_details.displayType.includes("AMOLED") &&
+  item?.speciality.map((x) => x.includes("1080p")) : value === 'camera' ?     parseInt(item?.phone_details.selfieCamera.split(",")[0].split(" ")[0]) >= 13 &&
+  parseInt(item?.storage) >= 64 &&
+  item?.phone_details.external.includes("microSD") : item);
+
   const triggerRef = useRef(null);
   const onGrabData = (currentPage) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const data = product.slice(
+        const data = mainData.slice(
           ((currentPage - 1) % TOTAL_PAGES) * NUM_PER_PAGE,
           NUM_PER_PAGE * (currentPage % TOTAL_PAGES)
         );
@@ -44,8 +56,7 @@ function Table({searchData, setSearchData}) {
   const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
   console.log(data);
 
- 
-   console.log(badges)
+   console.log(mainData)
   return (
     <>
   
@@ -66,17 +77,18 @@ function Table({searchData, setSearchData}) {
                       <select
                         aria-label="select"
                         class="py-3 px-4  focus:text-indigo-600 focus:outline-none bg-transparent"
+                        onChange={(e)=>setValue(e.target.value)}
                       >
-                        <option class="text-sm  text-indigo-800">
+                        <option class="text-sm  text-indigo-800" value=''>
                           All Products
                         </option>
-                        <option class="text-sm text-indigo-800">
+                        <option class="text-sm text-indigo-800" value='best-value'>
                           Best Value
                         </option>
-                        <option class="text-sm text-indigo-800">
+                        <option class="text-sm text-indigo-800" value='performance'>
                           Best Perfomence
                         </option>
-                        <option class="text-sm text-indigo-800">
+                        <option class="text-sm text-indigo-800" value='camera'>
                           Best Camera
                         </option>
                       </select>
@@ -123,7 +135,7 @@ function Table({searchData, setSearchData}) {
                       .includes(searchData.toString().toLowerCase()) 
                   )
                     .map((product) => {
-                      return <TableBodyPractice key={product._id} product={product}  badges={badges} setBadges={setBadges}/>;
+                      return <TableBodyPractice key={product._id} product={product}  badges={badges} setBadges={setBadges} value={value}/>;
                     })
                     }
                   </tbody>
